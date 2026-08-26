@@ -4,14 +4,14 @@
     --ink:#0d1014; --ink2:#464d57; --ink3:#878e98; --line:#e4e7ec; --acc:#3f7fbf; --tint:#f3f7fc;}
 /* ---------------- layout ---------------- */
 body{margin:0;background:#fff}
-.pg{display:grid;grid-template-columns:340px 1fr;background:#fff;color:var(--ink);
+.pg{display:grid;grid-template-columns:376px 1fr;background:#fff;color:var(--ink);
   font:16px/1.66 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
   -webkit-font-smoothing:antialiased;min-height:760px}
 .rail{background:var(--rail);color:var(--rink);display:flex;flex-direction:column}
 .pic{aspect-ratio:3/2;background:var(--rline);position:relative;overflow:hidden}
 .pic img{width:100%;height:100%;display:block;object-fit:cover}
 .rb{padding:28px 28px 32px;flex:1;display:flex;flex-direction:column}
-.rail h1{font-size:27px;line-height:1.14;font-weight:700;letter-spacing:-.028em;margin:0 0 13px;color:var(--rink)}
+.rail h1{font-size:25px;line-height:1.2;font-weight:700;letter-spacing:-.028em;margin:0 0 13px;color:var(--rink)}
 .rl{font-size:13.5px;line-height:1.62;color:var(--rmut);margin:0 0 4px}
 .rl b{color:var(--rink);font-weight:650}
 .rail nav{margin:26px 0 0;border-top:1px solid var(--rline);padding-top:16px}
