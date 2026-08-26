@@ -55,7 +55,8 @@ un `<details class="ab">` con el abstract.
 | `--ink2` | Texto secundario y prosa | `#464d57` |
 | `--ink3` | Metadatos apagados | `#878e98` |
 | `--line` | Líneas divisorias | `#e4e7ec` |
-| `--tint` | Fondo del realce al pasar el mouse | `#f3f7fc` |
+| `--band` | Fondo de la banda del encabezado y de la caja de docencia | `#f3f7fc` |
+| `--hover` | Fondo del realce al pasar el mouse | `#f0f1f3` |
 
 **Reemplazar los CV.** Sobrescribe `files/cv-en.pdf` y `files/cv-es.pdf` con el mismo nombre.
 
