@@ -116,3 +116,29 @@ h2.line{margin-bottom:14px;font-size:19px;font-weight:750;letter-spacing:-.018em
 .talks{margin:0;padding:0;list-style:none}
 .talks li{padding:11px 0 11px 104px;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--ink2);position:relative}
 .talks li span{position:absolute;left:0;top:13px;font-size:13px;font-weight:700;color:var(--ink3)}
+
+
+/* ---------- Notes ---------- */
+.sublabel{font-size:13.5px;color:var(--ink3);font-style:italic;margin:6px 0 0}
+.row .d{grid-column:1;grid-row:1;margin:0;padding-top:4px;font-size:12px;font-weight:800;
+ letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);line-height:1.35}
+.row .dek{font-size:15.5px;line-height:1.6;color:var(--ink2);margin:6px 0 0;max-width:720px}
+.tag2{display:inline-block;justify-self:start;font-size:10px;font-weight:800;letter-spacing:.1em;
+ text-transform:uppercase;color:var(--ink3);border:1px solid var(--line);border-radius:3px;
+ padding:2px 7px;margin:0 0 5px}
+.lk a.ext::after{content:" \2197";font-weight:600}
+
+/* una nota propia, abierta */
+.art{padding:34px 0 0;max-width:680px}
+.back{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+ color:var(--ink3);text-decoration:none;display:inline-block;margin-bottom:24px}
+.back:hover{color:var(--acc)}
+.art h1{font-size:34px;line-height:1.15;letter-spacing:-.028em;margin:0 0 12px}
+.artmeta{font-size:13px;color:var(--ink3);border-bottom:1px solid var(--line);
+ padding-bottom:18px;margin:0 0 28px}
+.artmeta b{color:var(--ink3);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:11px}
+.art p{font-size:17.5px;line-height:1.8;color:#22262c;margin:0 0 20px}
+.art a{color:var(--acc)}
+.pull{border-left:3px solid var(--acc);padding:2px 0 2px 20px;margin:26px 0;
+ font-size:19px;line-height:1.6;color:var(--ink);font-weight:650}
+@media(max-width:620px){.art h1{font-size:26px}.art p{font-size:16.5px;line-height:1.72}}
