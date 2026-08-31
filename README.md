@@ -10,6 +10,8 @@ compilación. Se abre igual con doble clic desde el disco que desde el servidor.
 index.html          Home — identidad, About, Recent y la lista completa (14 fichas)
 research.html       Los mismos papers agrupados por línea de investigación (8 fichas)
 teaching.html       Docencia por materia (18 cursos) + registro completo colapsado
+notes.html          Notes — columnas en prensa y notas propias, en español
+notes/              Una página por nota propia (las columnas de prensa no tienen página)
 assets/style.css    Toda la maquetación
 assets/avatar.jpg   Avatar circular de la barra superior
 assets/photo.jpg    Retrato — no se muestra en el sitio; es la imagen para redes (Open Graph)
@@ -45,6 +47,18 @@ un `<details class="ab">` con el abstract.
 `index.html`. El `<span>` lleva la fecha.
 
 **Cambiar la docencia vigente.** La caja `<div class="note">` al inicio de `teaching.html`.
+
+**Agregar una entrada a Notes.** No la escribas a mano: abre `editor_notas.html` (vive fuera de
+esta carpeta, en `Documents/webpage-tools`), carga el `notes.html` actual, escribe la entrada y
+aprieta *Generar*. Te devuelve el `notes.html` con la fila puesta en su lugar por fecha y, si es
+una nota tuya, su página dentro de `notes/`.
+
+> **Ojo:** las entradas de `notes.html` llevan `data-date="AAAA-MM-DD"` y viven entre los
+> comentarios `<!-- NOTES:START -->` y `<!-- NOTES:END -->`. El editor los necesita para
+> saber dónde insertar. Si los borras, deja de funcionar.
+
+Las columnas publicadas en prensa **no** se reproducen en el sitio: el título enlaza al medio.
+Es lo prudente mientras no tengas claro qué derechos conservas sobre esos textos.
 
 **Cambiar los colores.** Las variables al principio de `assets/style.css`:
 
@@ -90,6 +104,7 @@ URL de `<link rel="canonical">`, Open Graph y JSON-LD en los tres HTML.
 Escritos por Claude a partir del material de Cristián, y pendientes de su revisión:
 
 - El párrafo de apertura de `teaching.html`.
+- La bajada de `notes.html` ("Short pieces on economics for a general audience…").
 - La bajada bajo el título en `teaching.html`.
 - La selección de cinco congresos en `research.html`, elegida del CV.
 
