@@ -1,57 +1,67 @@
 # Sitio académico — Cristián Troncoso-Valverde
 
 Sitio estático: HTML y CSS escritos a mano, sin plantillas, sin base de datos y sin
-compilación. Se abre igual con doble clic desde el disco que desde el servidor.
+compilación. Se abre igual con doble clic desde el disco que desde el servidor, y no
+depende de ningún servicio externo: las fuentes también están aquí.
 
 **En línea:** https://ctroncoso-valverde.github.io/
 **Repositorio:** https://github.com/ctroncoso-valverde/ctroncoso-valverde.github.io
+(con guion entre *ctroncoso* y *valverde*; el repositorio sin guion no es este)
 
 ```
-index.html          Home — identidad, About, Recent y la lista completa (14 fichas)
-research.html       Los mismos papers agrupados por línea de investigación (8 fichas)
-teaching.html       Docencia por materia (18 cursos) + registro completo colapsado
+index.html          Home — identidad con foto, bio, Recent, Research y Grants & Service
+research.html       Párrafo de presentación + la misma lista, con filtros por línea
+teaching.html       Docencia vigente, materias desplegables y registro completo
 notes.html          Notes — columnas en prensa y notas propias, en español
-notes/              Una página por nota propia (las columnas de prensa no tienen página)
+notes/              Una página por nota propia (la crea el editor; las de prensa no tienen página)
 assets/style.css    Toda la maquetación
-assets/avatar.jpg   Avatar circular de la barra superior
-assets/photo.jpg    Retrato — no se muestra en el sitio; es la imagen para redes (Open Graph)
-files/cv-en.pdf     CV en inglés
+assets/site.js      Abstracts desplegables y filtros de Research
+assets/fonts/       Source Serif 4 (títulos) y Source Sans 3 (texto), con sus licencias OFL
+assets/avatar.jpg   Foto del bloque de identidad del Home
+assets/photo.jpg    Imagen para redes (Open Graph); no se muestra en el sitio
+files/cv-en.pdf     CV en inglés  (las fuentes LaTeX están en Documents/cv)
 files/cv-es.pdf     CV en español
-.nojekyll           Le dice a GitHub Pages que sirva los archivos tal cual, sin procesarlos
+.nojekyll           Le dice a GitHub Pages que sirva los archivos tal cual
 ```
 
 ## Cómo publicar un cambio
 
-1. Edita el archivo acá, en `Documents/webpage`.
+1. Edita el archivo aquí, en `Documents/webpage`.
 2. En GitHub, entra al repositorio y navega a la carpeta del archivo
-   (la raíz para los HTML, `assets/` para el CSS).
+   (la raíz para los HTML, `assets/` para el CSS y el JS, `files/` para los CV).
 3. **Add file → Upload files** y arrastra los archivos modificados. GitHub detecta
    que ya existen y los reemplaza.
-4. Escribe el mensaje del commit y **Commit changes**.
-5. Espera un minuto y recarga con **Cmd+Shift+R**. Sin eso vas a seguir viendo la
-   versión anterior guardada por el navegador.
+4. Escribe el mensaje del commit y aprieta **Commit changes**.
+5. Espera uno o dos minutos y recarga con **Cmd+Shift+R**.
 
-Sube solo lo que cambiaste. No subas `.DS_Store` — lo crea Finder solo y no sirve de nada.
+Sube solo lo que cambiaste. No subas `.DS_Store`: lo crea Finder y no sirve de nada.
 
 ## Cómo editar el contenido
 
-**Agregar una publicación.** Copia un bloque `<div class="row">` completo y edítalo.
-Su estructura es: `<div class="y">` con el año, `<p class="ti">` con el título enlazado
-al DOI, `<p class="me">` con la cita, `<div class="lk">` con las pastillas de enlaces y
-un `<details class="ab">` con el abstract.
+**Agregar un paper.** Copia un bloque `<div class="pp" data-l="...">` completo y edítalo:
+`<a class="pt">` es el título enlazado al DOI, `<div class="pa">` los autores, `<div class="pv">`
+la revista (en `<b>`) con volumen, páginas y año, `<div class="pl">` la fila de enlaces, y el
+abstract va en un `<div class="abx" hidden>` con un `id` que coincide con el `data-a` de su
+enlace *Abstract*. El atributo `data-l` dice a qué línea pertenece, para los filtros:
+`cm` (competing mechanisms), `dc` (disclosure under competition), `ic` (information obtained
+through cooperation). Sin `data-l`, el paper solo aparece con el filtro *All*.
 
-> **Ojo:** los papers viven en **dos** archivos. En `index.html` van ordenados por año;
-> en `research.html`, agrupados por línea. Si agregas uno, agrégalo en los dos.
+> **Ojo:** los papers viven en **dos** archivos, `index.html` y `research.html`. Si agregas
+> uno, agrégalo en los dos, y usa un `id` de abstract que no exista ya en esa página.
 
-**Agregar una novedad.** Un `<p class="newsitem">` dentro del bloque `.news` de
-`index.html`. El `<span>` lleva la fecha.
+**Agregar un trabajo en curso.** Un `<div class="pp wip" data-l="...">` en la sección
+*Work in Progress* de ambos archivos.
 
-**Cambiar la docencia vigente.** La caja `<div class="note">` al inicio de `teaching.html`.
+**Agregar una novedad.** Un `<p>` dentro del bloque `<div class="recent">` de `index.html`;
+el `<span>` lleva la fecha.
+
+**Cambiar la docencia vigente.** La línea `<p class="cur">` al inicio de `teaching.html`.
 
 **Agregar una entrada a Notes.** No la escribas a mano: abre `editor_notas.html` (vive fuera de
 esta carpeta, en `Documents/webpage-tools`), carga el `notes.html` actual, escribe la entrada y
 aprieta *Generar*. Te devuelve el `notes.html` con la fila puesta en su lugar por fecha y, si es
-una nota tuya, su página dentro de `notes/`.
+una nota tuya, su página para la carpeta `notes/`. Puedes agregar varias entradas seguidas sin
+volver a cargar el índice; al final sube el último `notes.html` generado.
 
 > **Ojo:** las entradas de `notes.html` llevan `data-date="AAAA-MM-DD"` y viven entre los
 > comentarios `<!-- NOTES:START -->` y `<!-- NOTES:END -->`. El editor los necesita para
@@ -64,15 +74,16 @@ Es lo prudente mientras no tengas claro qué derechos conservas sobre esos texto
 
 | Variable | Uso | Valor |
 |---|---|---|
-| `--acc` | Enlaces, años, rótulos de sección | `#3f7fbf` |
-| `--ink` | Texto principal | `#0d1014` |
-| `--ink2` | Texto secundario y prosa | `#464d57` |
-| `--ink3` | Metadatos apagados | `#878e98` |
-| `--line` | Líneas divisorias | `#e4e7ec` |
-| `--band` | Fondo de la banda del encabezado y de la caja de docencia | `#f3f7fc` |
+| `--acc` | Enlaces y títulos de papers | `#2a7ab8` |
+| `--acc2` | Filtro activo en Research | `#1d4f73` |
+| `--ink` | Texto principal y títulos | `#2c2c2c` |
+| `--ink2` | Texto secundario | `#555` |
+| `--ink3` | Metadatos apagados | `#8a8a8a` |
+| `--line` | Líneas divisorias | `#e6e6e6` |
 | `--hover` | Fondo del realce al pasar el mouse | `#f0f1f3` |
 
-**Reemplazar los CV.** Sobrescribe `files/cv-en.pdf` y `files/cv-es.pdf` con el mismo nombre.
+**Reemplazar los CV.** Compílalos en `Documents/cv` (ver su README) y sobrescribe
+`files/cv-en.pdf` y `files/cv-es.pdf` con el mismo nombre.
 
 ## Dominio propio (opcional)
 
@@ -83,29 +94,30 @@ Crea un archivo `CNAME` en la raíz del repositorio cuyo único contenido sea el
 - o un `CNAME` de `www` → `ctroncoso-valverde.github.io`
 
 Después marca **Enforce HTTPS** en Settings → Pages. Si lo haces, hay que actualizar las
-URL de `<link rel="canonical">`, Open Graph y JSON-LD en los tres HTML.
+URL de `<link rel="canonical">`, Open Graph y JSON-LD en los cuatro HTML, y la dirección
+fija que usa `editor_notas.html` para las notas propias.
 
 ## Pendientes
 
-- **Los dos working papers dicen "Draft available on request"** porque no existe un PDF
-  público. Cuando los tengas, súbelos a `files/` y reemplaza esa línea por una pastilla
-  de enlace, como las de DOI.
+- **Los dos working papers dicen "Draft on request"** porque no existe un PDF público.
+  Cuando los tengas, súbelos a `files/` y cambia ese enlace por uno al PDF.
 - **Faltan los abstracts de esos dos working papers.** Los otros siete están puestos
   textuales, verificados contra RePEc, Crossref y el BFI.
+- **El paper de 2004 no tiene línea de investigación** y solo aparece con el filtro *All*.
+  Todos los demás ítems están asignados a una línea.
 - **Reclamar el perfil en el RePEc Author Service**, para que aparezcan ahí el
-  *Economic Modelling* 2026 y el *JBIM* 2023, que hoy no figuran.
-- **Subir los working papers a SSRN.** Esa página tuya no registra nada desde 2015; con
-  material nuevo vuelve a ser un enlace que suma en vez de restar.
-- **Pedirle al BFI que actualice el Working Paper 2026-110** a la versión final: su
-  abstract es anterior al publicado y no contiene el resultado de bienestar.
+  *Economic Modelling* 2026 y el *JBIM* 2023.
+- **Subir los working papers a SSRN.** Esa página no registra nada desde 2015.
+- **Pedirle al BFI que actualice el Working Paper 2026-110** a la versión final.
 
 ## Textos que no son del autor
 
-Escritos por Claude a partir del material de Cristián, y pendientes de su revisión:
+Escritos por Claude a partir del material de Cristián:
 
-- El párrafo de apertura de `teaching.html`.
+- La bio del Home, construida a partir de la *Research Agenda* y del CV, y revisada y
+  editada por Cristián en noviembre de 2026.
 - La bajada de `notes.html` ("Short pieces on economics for a general audience…").
-- La bajada bajo el título en `teaching.html`.
 - La selección de cinco congresos en `research.html`, elegida del CV.
+- Los resúmenes de una línea de cada materia en `teaching.html`, derivados de la lista de cursos.
 
-El párrafo de apertura de `research.html` sí es literal del documento *Research Agenda*.
+El párrafo de `research.html` es de Cristián.
