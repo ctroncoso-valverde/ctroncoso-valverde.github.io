@@ -25,7 +25,7 @@ header nav a.on{color:var(--ink);font-weight:600;box-shadow:0 2px 0 var(--acc)}
 .id h1{font-size:26px;margin:14px 0 8px}
 .id .t{font-size:16.8px;color:var(--ink2);line-height:1.7;margin:0}
 .cvl{font-size:14.5px;margin:12px 0 0}.cvl a{margin-right:18px}
-.bio{font-size:17px;color:#3a3a3a;line-height:1.8;margin:0 0 14px;max-width:860px}
+.bio{font-size:17px;color:#3a3a3a;line-height:1.8;margin:0 0 14px;max-width:860px;text-align:justify;hyphens:auto}
 .aff{font-size:15px;color:var(--ink2);line-height:1.7;margin:14px 0 0}
 .sub{font-size:15px;color:var(--ink3);font-style:italic;margin:-8px 0 14px}
 .cur{font-size:16px;color:var(--ink2);margin:6px 0 0}.cur b{color:var(--ink);font-weight:600}
